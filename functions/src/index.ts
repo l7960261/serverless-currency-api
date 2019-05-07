@@ -15,11 +15,15 @@ export const webApi = functions.https.onRequest(main);
 
 app.get('/currency/exchange', (req, res) => {
   const amount = new Decimal(req.query.amount);
-  const USD = amount.div(rate.USDCNY.Exrate).valueOf();
   const CNY = amount.valueOf();
+  const USD = amount.div(rate.USDCNY.Exrate).valueOf();
+  const VND = new Decimal(USD).mul(rate.USDVND.Exrate).valueOf();
+  const THB = new Decimal(USD).mul(rate.USDTHB.Exrate).valueOf()
   const result = {
     USD,
-    CNY
+    CNY,
+    VND,
+    THB
   }
 
   res.status(200).send(result);
