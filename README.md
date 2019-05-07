@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/l7960261/serverless-currency-api.svg?branch=master)](https://travis-ci.com/l7960261/serverless-currency-api)
