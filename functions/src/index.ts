@@ -1,6 +1,8 @@
 import * as functions from 'firebase-functions';
 import * as express from 'express';
 import * as bodyParser from "body-parser";
+import { Decimal } from 'decimal.js';
+import rate from './rate';
 
 const app = express();
 const main = express();
@@ -12,11 +14,13 @@ main.use(bodyParser.urlencoded({ extended: false }));
 export const webApi = functions.https.onRequest(main);
 
 app.get('/currency/exchange', (req, res) => {
-  const to = req.query.to;
-  const amount = req.query.amount;
+  const amount = new Decimal(req.query.amount);
+  const USD = amount.div(rate.USDCNY.Exrate).valueOf();
+  const CNY = amount.valueOf();
+  const result = {
+    USD,
+    CNY
+  }
 
-  console.log('to: ', to);
-  console.log('amount: ', amount);
-
-  res.status(200).send({});
+  res.status(200).send(result);
 });

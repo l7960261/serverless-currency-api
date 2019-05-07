@@ -7,7 +7,8 @@
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "update-rate": "node tasks/updateRate.js"
   },
   "engines": {
     "node": "8"
@@ -15,6 +16,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "decimal.js": "^10.1.1",
     "express": "^4.16.4",
     "firebase-admin": "~7.0.0",
     "firebase-functions": "^2.3.0"

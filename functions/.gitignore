@@ -5,4 +5,10 @@
 # Typescript v1 declaration files
 typings/
 
+# Task
+!tasks/updateRate.js
+
+# Recently rate file
+src/rate.ts
+
 node_modules/
