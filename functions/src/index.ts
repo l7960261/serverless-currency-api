@@ -38,7 +38,8 @@ app.post('/version/check', (req, res) => {
   const platform = os ? os.toLowerCase() : 'android';
   var result = {
     link: '',
-    message: ''
+    message: '',
+    latest: _version,
   };
 
   switch (platform) {
